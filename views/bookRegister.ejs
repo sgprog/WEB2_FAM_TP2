@@ -1,0 +1,167 @@
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title">
+                    Ajout d'un livre</h3>
+                <span class="topRightElements">
+                    <a href="/usagers/menu">
+                        <button type="button" class="btn btn-primary btn-xs" title="Approved">
+                            <span class="glyphicon glyphicon-circle-arrow-left"></span> Retour aux usagers
+                            
+                        </button>
+                    </a>
+                </span>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <%- include ('./partials/alerts.ejs') %>
+                        <form class="form-signin" action="/livres/ajouter" method="POST">
+
+                            <input 
+                                type="text"
+                                id="titre"
+                                name="titre"
+                                class="form-control"
+                                placeholder="Titre"
+                                
+                            >
+                            <input 
+                                type="text" 
+                                id="auteur"
+                                name="auteur"
+                                class="form-control" 
+                                placeholder="Auteur" 
+                                
+                            >
+                            <input 
+                                type="text" 
+                                id="editeur"
+                                name="editeur"
+                                class="form-control" 
+                                placeholder="Éditeur" 
+                                
+                            >
+                            <input 
+                                type="text" 
+                                id="pages"
+                                name="pages"
+                                class="form-control" 
+                                placeholder="Pages" 
+                                
+                            >
+                            <input 
+                                type="text" 
+                                id="langue"
+                                name="langue"
+                                class="form-control" 
+                                placeholder="Langue" 
+                                
+                            >
+                            <input 
+                                type="text" 
+                                id="date"
+                                name="date"
+                                class="form-control" 
+                                placeholder="Date" 
+                                
+                            >
+                            <input 
+                                type="text" 
+                                id="genre"
+                                name="genre"
+                                class="form-control" 
+                                placeholder="Genre" 
+                                
+                            >
+                            <input 
+                                type="number" 
+                                step="0.01"
+                                id="prix"
+                                name="prix"
+                                class="form-control" 
+                                placeholder="Prix" 
+                                
+                            >
+                            <input 
+                                type="text" 
+                                id="url_image"
+                                name="url_image"
+                                class="form-control" 
+                                placeholder="URL Image" 
+                                
+                            >
+                            <input 
+                                type="text" 
+                                id="resume"
+                                name="resume"
+                                class="form-control" 
+                                placeholder="Résumé" 
+                                
+                            >
+
+
+                        <!--
+                            <input 
+                                type="text"
+                                id="userName"
+                                name="userName"
+                                class="form-control"
+                                value="<%- typeof(nom) != 'undefined' ? nom : '' %>"
+                                placeholder="Nom"
+                                
+                            >
+                            <input 
+                                type="text" 
+                                id="email"
+                                name="email"
+                                class="form-control" 
+                                value="<%- typeof(email) != 'undefined' ? email : '' %>"
+                                placeholder="Courriel" 
+                                
+                            >
+                            <input 
+                                type="password" 
+                                id="password"
+                                name="password"
+                                class="form-control" 
+                                value="<%- typeof(password) != 'undefined' ? password : '' %>"
+                                placeholder="Mot de passe" 
+                                
+                            >
+                            <input 
+                                type="password" 
+                                id="password2"
+                                name="password2"
+                                class="form-control" 
+                                value="<%- typeof(password2) != 'undefined' ? password2 : '' %>"
+                                placeholder="Confirmation du mot de passe" 
+                                
+                            >
+                            
+                            <input type="checkbox" value="normal" id="normal" name="normal" checked disabled>
+                            <label for="normal">Normal</label>
+
+                            <input type="checkbox" value="admin" id="admin" name="admin" >
+                            <label for="admin">Admin</label>
+
+                            <input type="checkbox" value="gestion" id="gestion" name="gestion">
+                            <label for="gestion">Gestion</label>
+
+
+                        -->
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                                Créer un compte</button>
+
+                        </form>
+                    </li>
+                    
+                    
+                </ul>
+                <a href="/usagers/menu" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-circle-arrow-left"></span> Retour au tableau des usagers</a>
+            </div>
+        </div>
+    </div>
+</div>

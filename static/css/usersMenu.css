@@ -1,0 +1,98 @@
+body { padding-top:30px;
+}
+.widget .panel-body { padding:0px;}
+.widget .list-group { margin-bottom: 0; }
+.widget .panel-title { display:inline }
+
+.widget li.list-group-item {border-radius: 0;border: 0;border-top: 1px solid #ddd;}
+
+.widget .mic-info { color: #666666;font-size: 11px; }
+.widget .action { margin-top:5px; }
+.widget .comment-text { font-size: 12px; }
+.widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
+
+.topRightElements { float: right; }
+
+.role-small-logo {
+    display: inline-block;
+    width: 4px;
+    height: 24px;
+    margin-bottom: 0;
+    margin-left: 10px;
+    color: #3576be;
+    
+}
+
+.role-small-logo-container {
+    margin-left: 10px;
+}
+
+#img-container {
+    display: inline-block;
+    position: relative;
+    height: 200px;
+    width: 290px;
+    padding: auto;
+    margin: 5px;
+    
+}
+
+.user-menu-user-img {
+    width: 80px;
+    height: 80px;
+    margin-left: 8px;
+    object-fit: cover;
+}
+
+.user-register-image {
+    width: 200px;
+    height: 200px;
+    margin-left: 50px;
+    object-fit: cover;
+}
+
+.img-trash-icon {
+    position: absolute !important;
+    width: 28px;
+    height: 30px;
+    top: 160px !important;
+    right: 50px;
+    font-size: 24px;
+    background-color: rgba(125, 125, 125, 0.2);
+    color: rgba(255, 255, 255, 1);
+}
+
+.img-trash-icon:hover {
+    opacity: 60%;
+}
+
+.admin-false-logo {
+    color: rgba(128, 128, 128, 0.3);
+}
+
+.admin-true-logo {
+    color: #084183;
+}
+
+.gestion-false-logo {
+    color: rgba(128, 128, 128, 0.3);
+}
+
+.gestion-true-logo {
+    color: #084183;
+}
+
+.user-menu-legend-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.user-menu-legend-element {
+    margin-left: 4px;
+    margin-right: 10px;
+}
+
+.user-header-info-container {
+    margin-left: 10px !important;
+}

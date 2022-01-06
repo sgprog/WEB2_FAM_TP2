@@ -1,0 +1,64 @@
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title">
+                    Effacer un usager</h3>
+                <span class="topRightElements">
+
+                </span>      
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item alert-danger id='<%- user._id %>'>
+                        <div class="row">
+                            <div class="col-xs-2 col-md-1">
+                                <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    Nom d'utilisateur: 
+                                    <a href="http://bootsnipp.com/BhaumikPatel/snippets/4ldn">
+                                        <%- userElement.nom %>
+                                    </a>
+                                    <div class="mic-info">
+                                        Courriel: <a href="#">
+                                            <%- userElement.email %>
+                                        </a> créé le
+                                        <span>
+                                            <%- userElement.date %>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="action">
+                                    <a href="/usagers/menu">
+                                        <button type="button" class="btn btn-warning btn-xs warningActionButton" title="Edit">
+                                            <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                                            Annuler
+                                        </button>
+                                    </a>
+                                    
+                                    <form class="ghost-form" action="/usagers/action_supprimer" method="POST">
+                                        <input type="hidden" id="_id" name="_id" value=<%- userElement._id %> >
+                                        <input type="hidden" id="userName" name="userName" value=<%- userElement.nom %> >
+                                        <button type="submit" class="btn btn-danger btn-xs warningActionButton" title="Delete">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                            Confirmer suppression
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    
+
+
+                </ul>
+                <a href="/usagers/menu" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-circle-arrow-left"></span> Retour au tableau des usagers</a>
+            
+            </div>
+        </div>
+    </div>
+</div>

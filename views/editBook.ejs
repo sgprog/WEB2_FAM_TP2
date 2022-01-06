@@ -1,0 +1,153 @@
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title">
+                    Modification d'un livre</h3>
+                <span class="topRightElements">
+                    <a href="/livres">
+                        <button type="button" class="btn btn-primary btn-xs" title="Approved">
+                            <span class="glyphicon glyphicon-circle-arrow-left"></span> Retour aux livres
+                        </button>
+                    </a>
+                </span>
+            </div>
+            <div class="panel-body">
+                
+                <ul class="list-group">
+                    <li class="list-group-item alert-warning" id=<%- user._id %>>
+                        <div class="row">
+                            <div class="col-xs-2 col-md-1">
+                                <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    Titre du livre : 
+                                        <%- bookElement.titre %>
+                                    
+                                    <div class="mic-info">
+                                        Date de parution : 
+                                            <%- bookElement.date %>                                      
+                                    </div>
+                                </div>
+                                <div class="action">
+                                    <a href="/livres">
+                                        <button type="button" class="btn btn-primary btn-xs warningActionButton" title="Edit">
+                                            <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                                            Annuler
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    
+
+
+                </ul>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <%- include ('./partials/alerts.ejs') %>
+                        <form class="form-signin form-edit-book" action="/usagers/action_editer" method="POST">
+                            <table>  
+                                <span class="edit-book-key" >Titre :</span>
+                                <input 
+                                    type="text"
+                                    id="titre"
+                                    name="titre"
+                                    class="form-control form-control-book"
+                                    value="<%- bookElement.titre || '' %>"
+                                >
+                            
+                                <span class="edit-book-key" >Auteur :</span>
+                                <input 
+                                    type="text" 
+                                    id="auteur"
+                                    name="auteur"
+                                    class="form-control form-control-book" 
+                                    value="<%- bookElement.auteur || '' %>" 
+                                >
+                        
+                                <span class="edit-book-key" >Éditeur :</span>
+                                <input 
+                                    type="text" 
+                                    id="editeur"
+                                    name="editeur"
+                                    class="form-control form-control-book" 
+                                    value="<%- bookElement.éditeur || '' %>" 
+                                    
+                                >
+                                <span class="edit-book-key" >Pages :</span>
+                                <input 
+                                    type="text" 
+                                    id="pages"
+                                    name="pages"
+                                    class="form-control form-control-book" 
+                                    value="<%- bookElement.pages || '' %>" 
+                                    
+                                >
+                                <span class="edit-book-key" >Langue :</span>
+                                <input 
+                                    type="text" 
+                                    id="langue"
+                                    name="langue"
+                                    class="form-control form-control-book"
+                                    value="<%- bookElement.langue || '' %>" 
+                                    
+                                >
+                                <span class="edit-book-key" >Date :</span>
+                                <input 
+                                    type="text" 
+                                    id="date"
+                                    name="date"
+                                    class="form-control form-control-book"
+                                    value="<%- bookElement.date || '' %>" 
+                                    
+                                >
+                                <span class="edit-book-key" >Genre :</span>
+                                <input 
+                                    type="text" 
+                                    id="genre"
+                                    name="genre"
+                                    class="form-control form-control-book"
+                                    value="<%- bookElement.genre || '' %>" 
+                                    
+                                >
+                                <span class="edit-book-key" >URL Image :</span>
+                                <input 
+                                    type="text" 
+                                    id="url_image"
+                                    name="url_image"
+                                    class="form-control form-control-book"
+                                    value="<%- bookElement.url_image || '' %>" 
+                                    
+                                >
+                                <span class="edit-book-key" >Résumé :</span>
+                                <input 
+                                    type="text" 
+                                    id="resume"
+                                    name="resume"
+                                    class="form-control form-control-book"
+                                    value="<%- bookElement.résumé || '' %>"  
+                                >
+
+                            </table>
+
+
+                            <input type="hidden" id="_id" name="_id" value=<%- bookElement._id %> >
+                            <input type="hidden" id="previousName" name="previousName" value=<%- bookElement.nom %> >
+                            
+                            <button class="btn btn-lg btn-warning btn-block" type="submit">
+                                Modifier le livre</button>
+
+                        </form>
+                    </li>
+                    
+                    
+                </ul>
+                <a href="/livres" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-circle-arrow-left"></span> Retour aux livres</a>
+            </div>
+        </div>
+    </div>
+</div>

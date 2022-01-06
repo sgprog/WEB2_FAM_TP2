@@ -1,0 +1,208 @@
+<%- include ('./partials/alerts.ejs') %>
+
+<% let statusGestion = user.roles.indexOf('gestion') >= 0 %>
+
+
+<% let deletePageLink = '/livres/supprimer' %>
+<% let editPageLink = '/livres/editer' %>
+
+
+
+
+
+
+<div class="container book-main-list-container" >
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title">
+                    Gestion des livres</h3>
+                <span class="topRightElements">
+
+
+                    <% if (statusGestion) { %>
+                        <a href="/livres/ajouter">
+                            <button type="button" class="btn btn-success btn-xs" title="Approved">
+                                Ajouter un livre
+                            </button>
+                        </a>
+                    <% } %>
+
+
+
+                   
+
+                    <span class="label label-info">
+                        <%- bookList.length %></span>
+                </span>
+               
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    
+                    
+                    <div class="book-list-container-flexible">
+
+                        <% bookList.forEach( (book) => { %>
+                    
+                        <span class="book-element-flexible">
+                            
+                            <span class="book-left-section">
+                                <span class="book-image-container-flex">
+                                    
+                                    <img class="book-thumbnail-image" src="<%- book.url_image %>" alt="Image du livre">
+                                </span>
+                            </span>
+                        
+                            <span class="book-right-container">  
+                                
+                                <span class="web2-tp2-bookInfo-grid">
+                                    
+                                        <span class="info-item-description"> 
+                                            Titre :  <%- book.titre %>
+                                        
+                                        </span>
+                                        
+                                        <span class="info-item-description">
+                                            Auteur : 
+                                                <%- book.auteur %>
+                                        </span>
+                                    
+                                        
+                                        <span class="info-item-description">
+                                        Date de parution :
+                                            <span>
+                                                <%- book.date %>
+                                            </span>
+                                        </span>
+                                        <span class="info-item-description">
+                                            Genre :
+                                            <span>
+                                                <%- book.genre %>
+                                            </span>
+                                        </span>
+                                        <span class="info-item-description">
+                                            Pages :
+                                            <span>
+                                                <%- book.pages %>
+                                            </span>
+                                        </span>
+                                        <span class="info-item-description">
+                                            Prix :
+                                            <span>
+                                                <%- book.prix %>
+                                            </span>
+                                        </span>
+                                    <span class="book-list-option-buttons-container">
+                                        <span class="book-normal-user-option">
+                                            <a href="/livres/consulter/<%- book._id %>">
+                                                <button type="button" class="btn btn-primary btn-xs web2-tp1-header-btn" title="Déconnecter">
+                                                    <span>Détails</span>
+                                                </button>
+                                            </a>
+                                        </span>
+                                        <% if (statusGestion) { %>
+                                        <span class="action info-item-description">
+                                            <% let editLinkWithQuery = editPageLink + '?_id=' + book._id %>
+                                            <a href=<%- editLinkWithQuery %>>
+                                                <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                </button>
+                                            </a>
+                                    
+                                            <% let deleteLinkWithQuery = deletePageLink + '?_id=' + book._id %>
+                                            <a href=<%- deleteLinkWithQuery %>>
+                                                <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </button>
+                                            </a>
+                                        </span>
+                                    </span>
+                                    <% } %>
+                                </span> 
+                            </span>
+                        </span>
+                            
+                            <% }); %>
+                    </div>
+
+<!-- 
+                    <% bookList.forEach( (book) => { %>
+
+                    <li class="list-group-item" id=<%- book._id %>>  
+                        <div class=".web2-tp2-bookRow">
+                            <a href="/livres/consulter/<%- book._id %>">
+                               
+                                <span class="web2-tp2-bookIcon-container">
+                                    
+                                    <span class="web2-tp2-imgContainer"> <img class="book-thumbnail-image" src="<%- book.url_image %>" alt="Image du livre"> </span>
+                                </span>
+                               
+                                <span class="web2-tp2-bookInfo-container">  
+                                    <span class="web2-tp2-bookInfo-grid">
+                                        
+                                            <span class="info-item-description"> 
+                                                Titre :  <%- book.titre %>
+                                            
+                                            </span>
+                                            
+                                            <span class="info-item-description">
+                                                Auteur : 
+                                                    <%- book.auteur %>
+                                            </span>
+                                        
+                                            
+                                            <span class="info-item-description">
+                                            Date de parution :
+                                                <span>
+                                                    <%- book.date %>
+                                                </span>
+                                            </span>
+                                            <span class="info-item-description">
+                                                Genre :
+                                                <span>
+                                                    <%- book.genre %>
+                                                </span>
+                                            </span>
+                                            <span class="info-item-description">
+                                                Prix :
+                                                <span>
+                                                    <%- book.prix %>
+                                                </span>
+                                            </span>
+                                        <% if (statusGestion) { %>
+                                        <span class="action info-item-description">
+                                            <% let editLinkWithQuery = editPageLink + '?_id=' + book._id %>
+                                            <a href=<%- editLinkWithQuery %>>
+                                                <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                </button>
+                                            </a>
+                                    
+                                            <% let deleteLinkWithQuery = deletePageLink + '?_id=' + book._id %>
+                                            <a href=<%- deleteLinkWithQuery %>>
+                                                <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </button>
+                                            </a>
+                                        </span>
+                                        <% } %>
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                        
+                    </li>
+
+                    <% }); %> -->
+
+
+                </ul>
+                <a href="/index" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-circle-arrow-left"></span> Retour au menu principal</a>
+            
+            </div>
+        </div>
+    </div>
+</div>
+

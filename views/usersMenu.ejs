@@ -1,0 +1,129 @@
+<%- include ('./partials/alerts.ejs') %>
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title">
+                    Gestion des usagers</h3>
+                <span class="topRightElements">
+                    <a href="/usagers/ajouter">
+                        <button type="button" class="btn btn-success btn-xs" title="Approved">
+                            Ajouter un usager
+                        </button>
+                    </a>
+
+                    <span class="label label-info">
+                        <%- userList.length %></span>
+                </span>
+               
+            </div>
+            <div class="panel-body">
+                <div class="user-menu-legend-container">
+                    <span class="user-menu-legend">
+                        <span class="user-menu-legend-element">Légende :</span>
+                         
+                        
+                        <span class="user-menu-legend-element">
+                            <span class="glyphicon glyphicon-cog admin-true-logo"></span>
+                            Administrateur
+                        </span>
+                        
+                        
+                        <span class="user-menu-legend-element">
+                            <span class="glyphicon glyphicon-file gestion-true-logo"></span>
+                            Gestionnaire
+                        </span>
+                        
+                    </span>
+                </div>
+                <ul class="list-group">
+                    
+                    <% let deletePageLink = '/usagers/supprimer' %>
+                    <% let editPageLink = '/usagers/editer' %>
+
+                    <% userList.forEach( (user) => { %>
+
+                    <%  let adminStatus = (user.roles.indexOf('admin') >= 0) %>
+                    <%  let gestionStatus = (user.roles.indexOf('gestion') >= 0) %>
+
+
+                   
+                    <li class="list-group-item" id=<%- user._id %>>
+                        <div class="row">
+                            <div class="col-xs-2 col-md-1 web2-tp1-userIcon-container">
+  
+                                <% if (user.fichierImage) { %>
+                                    <img src="../../img/<%- user.fichierImage %>" alt="image usager" class="user-menu-user-img" />
+                                <% } else { %>
+                                    <span class="glyphicon glyphicon-user btn-group-sm web2-tp1-userIcon"></span>
+                                <% } %>
+                                
+                      
+                            </div>
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    Nom d'utilisateur: 
+                                    <a href="http://bootsnipp.com/BhaumikPatel/snippets/4ldn">
+                                        <%- user.nom %>
+                                    </a>
+                                    <div class="mic-info">
+                                        Courriel: <a href="#">
+                                            <%- user.email %>
+                                        </a> créé le
+                                        <span>
+                                            <%- user.date %>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="action">
+                                    <% let editLinkWithQuery = editPageLink + '?_id=' + user._id %>
+                                    <a href=<%- editLinkWithQuery %>>
+                                        <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </button>
+                                    </a>
+                          
+                                    <% let deleteLinkWithQuery = deletePageLink + '?_id=' + user._id %>
+                                    <a href=<%- deleteLinkWithQuery %>>
+                                        <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </a>
+                                    <span class="role-small-logo-container">
+                                        <span class="role-small-logo">
+                                            <% if (adminStatus) { %>
+                                                <span class="glyphicon glyphicon-cog admin-true-logo"></span>
+                                            <% } else { %>
+                                                <span class="glyphicon glyphicon-cog admin-false-logo"></span>
+                                            <% } %>
+                                            
+                                            
+                                            
+                                        </span>
+                                        <span class="role-small-logo">
+                                            <% if (gestionStatus) { %>
+                                                <span class="glyphicon glyphicon-file gestion-true-logo"></span>
+                                            <% } else { %>
+                                                <span class="glyphicon glyphicon-file gestion-false-logo"></span>
+                                            <% } %>
+                                            
+                                            
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <% }); %>
+
+
+                </ul>
+                <a href="/index" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-circle-arrow-left"></span> Retour au menu principal</a>
+            
+            </div>
+        </div>
+    </div>
+</div>

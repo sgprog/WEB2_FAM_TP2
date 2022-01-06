@@ -1,0 +1,117 @@
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title">
+                    Détails du livre</h3>
+                <span class="topRightElements">
+                    <a href="/livres">
+                        <button type="button" class="btn btn-primary btn-xs" title="Approved">
+                            <span class="glyphicon glyphicon-circle-arrow-left"></span> Retour aux livres
+                        </button>
+                    </a>
+
+                </span>
+            </div>
+
+            <div class="book-details-container">
+                <span class="book-details-picture-container">
+                    <img src="<%- bookElement.url_image %>" alt="-- Image du livre - <%- bookElement.titre %> --"/>
+                </span>
+                <span class="book-details-info-container">
+                    <span class="book-details-info-element">
+                        <span class="book-details-info-key">Titre : </span>
+                        <%- bookElement.titre %>
+                    </span>
+                    <span class="book-details-info-element">
+                        <span class="book-details-info-key">Auteur : </span>
+                        <%- bookElement.auteur %>
+                    </span>
+                    <span class="book-details-info-element">
+                        <span class="book-details-info-key">Genre : </span>
+                        <%- bookElement.genre %>
+                    </span>
+                    <span class="book-details-info-element">
+                        <span class="book-details-info-key">Éditeur : </span>
+                        <%- bookElement.éditeur %>
+                    </span>
+                    <span class="book-details-info-element">
+                        <span class="book-details-info-key">Pages : </span>
+                        <%- bookElement.pages %>
+                    </span>
+                    <span class="book-details-info-element">
+                        <span class="book-details-info-key">Langue : </span>
+                        <%- bookElement.langue %>
+                    </span>
+                    <span class="book-details-info-element">
+                        <span class="book-details-info-key">Date : </span>
+                        <%- bookElement.date %>
+                    </span>
+                    <span class="book-details-info-element">
+                        <span class="book-details-info-key">Résumé : </span>
+                        <%- bookElement.résumé %>
+                    </span>
+                    <span class="book-details-info-element">
+                        <span class="book-details-info-key">Prix : </span>
+                        <%- bookElement.prix %>
+                    </span>
+
+                </span>
+
+            </div>
+
+
+            
+            <div class="panel-body">
+                <!--
+                <ul class="list-group">
+                    <li class="list-group-item alert-warning" id=<%- user._id %>>
+                        <div class="row">
+                            <div class="col-xs-2 col-md-1">
+                                <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    Nom d'utilisateur: 
+                                    <a href="http://bootsnipp.com/BhaumikPatel/snippets/4ldn">
+                                        <%- bookElement.nom %>
+                                    </a>
+                                    <div class="mic-info">
+                                        Courriel: <a href="#">
+                                            <%- bookElement.email %>
+                                        </a> créé le
+                                        <span>
+                                            <%- bookElement.date %>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="action">
+                                    <a href="/usagers/menu">
+                                        <button type="button" class="btn btn-primary btn-xs warningActionButton" title="Edit">
+                                            <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                                            Annuler
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    
+
+
+                </ul>
+            -->
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        
+                    </li>
+                    
+                    
+                </ul>
+                <a href="/livres" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-circle-arrow-left"></span> Retour aux livres</a>
+            </div>
+           
+        </div>
+    </div>
+</div>

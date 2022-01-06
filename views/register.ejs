@@ -1,0 +1,122 @@
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title">
+                    Ajout d'un usager</h3>
+                <span class="topRightElements">
+                    <a href="/usagers/menu">
+                        <button type="button" class="btn btn-primary btn-xs" title="Approved">
+                            <span class="glyphicon glyphicon-circle-arrow-left"></span> Retour aux usagers
+                            
+                        </button>
+                    </a>
+                </span>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <%- include ('./partials/alerts.ejs') %>
+                        <form class="form-signin" action="/usagers/ajouter" method="POST" enctype="multipart/form-data">
+                            <input 
+                                type="text"
+                                id="userName"
+                                name="userName"
+                                class="form-control"
+                                value="<%- typeof(nom) != 'undefined' ? nom : '' %>"
+                                placeholder="Nom"
+                                
+                            >
+                            <input 
+                                type="text" 
+                                id="email"
+                                name="email"
+                                class="form-control" 
+                                value="<%- typeof(email) != 'undefined' ? email : '' %>"
+                                placeholder="Courriel" 
+                                
+                            >
+                            <input 
+                                type="password" 
+                                id="password"
+                                name="password"
+                                class="form-control" 
+                                value="<%- typeof(password) != 'undefined' ? password : '' %>"
+                                placeholder="Mot de passe" 
+                                
+                            >
+                            <input 
+                                type="password" 
+                                id="password2"
+                                name="password2"
+                                class="form-control" 
+                                value="<%- typeof(password2) != 'undefined' ? password2 : '' %>"
+                                placeholder="Confirmation du mot de passe" 
+                                
+                            >
+
+                            <input 
+                                type="file" 
+                                id="img"
+                                name="img"
+                                class="form-control" 
+                                value="<%- typeof(img) != 'undefined' ? img : '' %>"
+                                placeholder="Image de profil" 
+                                
+                            >
+                            
+                            <input type="checkbox" value="normal" id="normal" name="normal" checked disabled>
+                            <label for="normal">Normal</label>
+
+                            <input type="checkbox" value="admin" id="admin" name="admin" >
+                            <label for="admin">Admin</label>
+
+                            <input type="checkbox" value="gestion" id="gestion" name="gestion">
+                            <label for="gestion">Gestion</label>
+                            <br>
+                            <span id="img-container">
+                                <span class="glyphicon glyphicon-user btn-group-sm web2-tp1-userIcon-register" ></span> 
+                            </span>
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                                Créer un compte</button>
+
+                        </form>
+                        
+                    </li>
+                    
+                    
+                </ul>
+                <a href="/usagers/menu" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-circle-arrow-left"></span> Retour au tableau des usagers</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/load-image.js"></script>
+<script>
+    
+const emptyUserIcon = $($.parseHTML('<span class="glyphicon glyphicon-user btn-group-sm web2-tp1-userIcon-register" ></span>'));
+
+$('#img').change ( async function () {
+        $('#img-container').empty();
+        let data = await loadImage(this.files[0], { maxWidth: 50 })
+
+        $(data.image).attr('alt', "Image de l'usager");
+        $(data.image).attr('id', "show-img");
+        $(data.image).attr('class', "user-register-image");
+        $('#img-container').append(data.image);
+        var trashIconNode = $($.parseHTML('<span class="glyphicon glyphicon-trash btn-group-sm img-trash-icon"></span>'));
+        $('#img-container').append(trashIconNode);
+        trashIconNode.click( () => {
+            $('#img-container').empty();
+            $('#img-container').append(emptyUserIcon);
+            $('#img').val('');
+            
+        })
+        }
+        
+    )
+</script>

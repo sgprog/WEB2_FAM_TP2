@@ -1,0 +1,189 @@
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title">
+                    Modification d'un usager</h3>
+                <span class="topRightElements">
+                    <a href="/usagers/menu">
+                        <button type="button" class="btn btn-primary btn-xs" title="Approved">
+                            <span class="glyphicon glyphicon-circle-arrow-left"></span> Retour aux usagers
+                            
+                        </button>
+                    </a>
+
+                </span>
+            </div>
+            <div class="panel-body">
+                
+                <ul class="list-group">
+                    <li class="list-group-item alert-warning" id=<%- user._id %>>
+                        <div class="row user-header-info-container">
+                            <div>
+                                <div >
+                                    Nom d'utilisateur: 
+                                    <a href="http://bootsnipp.com/BhaumikPatel/snippets/4ldn">
+                                        <%- userElement.nom %>
+                                    </a>
+                                    <div class="mic-info">
+                                        Courriel: <a href="#">
+                                            <%- userElement.email %>
+                                        </a> créé le
+                                        <span>
+                                            <%- userElement.date %>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="action">
+                                    <a href="/usagers/menu">
+                                        <button type="button" class="btn btn-primary btn-xs warningActionButton" title="Edit">
+                                            <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                                            Annuler
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    
+
+
+                </ul>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <%- include ('./partials/alerts.ejs') %>
+                        <form class="form-signin" action="/usagers/action_editer" method="POST" enctype="multipart/form-data">
+                            <input 
+                                type="text"
+                                id="userName"
+                                name="userName"
+                                class="form-control"
+                                placeholder="Nom"
+                                value="<%- userElement.nom %>"
+                                
+                            >
+                            <input 
+                                type="text" 
+                                id="email"
+                                name="email"
+                                class="form-control" 
+                                placeholder="Courriel" 
+                                value="<%- userElement.email %>"  
+                                
+                            >
+                            <input 
+                                type="password" 
+                                id="password"
+                                name="password"
+                                class="form-control" 
+                                placeholder="Mot de passe" 
+                                
+                            >
+                            <input 
+                                type="password" 
+                                id="password2"
+                                name="password2"
+                                class="form-control" 
+                                placeholder="Confirmation du mot de passe" 
+                                
+                            >
+
+                            <input 
+                                type="file" 
+                                id="img"
+                                name="img"
+                                class="form-control" 
+                                value="<%- typeof(img) != 'undefined' ? img : '' %>"
+                                placeholder="Image de profil" 
+                                
+                            >
+                            
+                            <input type="hidden" id="previousPicture" name="previousPicture" value="<%- userElement.fichierImage %>">
+
+                            <input type="hidden" id="shouldDeleteOldImage" name="shouldDeleteOldImage" value="false">
+
+                            <input type="checkbox" value="normal" id="normal" name="normal" checked disabled>
+                            <label for="normal">Normal</label>
+
+                            <input type="checkbox" value="admin" id="admin" name="admin" <%- userElement.roles.indexOf('admin') >= 0 ? 'checked' : ''%>>
+                            <label for="admin">Admin</label>
+
+                            <input type="checkbox" value="gestion" id="gestion" name="gestion" <%- userElement.roles.indexOf('gestion') >= 0 ? 'checked' : ''%>>
+                            <label for="gestion">Gestion</label>
+
+                            <input type="hidden" id="_id" name="_id" value=<%- userElement._id %> >
+                            <input type="hidden" id="previousName" name="previousName" value=<%- userElement.nom %> >
+                            
+                            <span id="img-container">
+                                <% if (!userElement.fichierImage) { %>
+                                <span class="glyphicon glyphicon-user btn-group-sm web2-tp1-userIcon-register" ></span> 
+                                <% } else { %>
+                                    <span><img src="../img/<%- userElement.fichierImage %>" class="user-register-image" id="show-img" alt="Image de l'usager"/></span>
+                                <% } %>
+                            </span>
+
+                            <button class="btn btn-lg btn-warning btn-block" type="submit">
+                                Modifier le compte</button>
+
+                        </form>
+                    </li>
+                    
+                    
+                </ul>
+                <a href="/usagers/menu" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-circle-arrow-left"></span> Retour au tableau des usagers</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/load-image.js"></script>
+<script>
+    
+const emptyUserIcon = $($.parseHTML('<span class="glyphicon glyphicon-user btn-group-sm web2-tp1-userIcon-register" ></span>'));
+
+const trashIconNode = $($.parseHTML('<span class="glyphicon glyphicon-trash btn-group-sm img-trash-icon"></span>'));
+
+$('#img').change ( async function () {
+
+        // In real time
+        // Get the image choosen in the form
+        $('#img-container').empty();
+        let data = await loadImage(this.files[0], { maxWidth: 50 })
+
+        // Set the image element
+        $(data.image).attr('alt', "Image de l'usager");
+        $(data.image).attr('id', "show-img");
+        $(data.image).attr('class', "user-register-image");
+        $('#img-container').append(data.image);
+
+        addTrashCan();
+    }
+    
+)
+
+const addTrashCan = () => {
+     // Add the trash can
+     $('#img-container').append(trashIconNode);
+
+    // Bind action to click on trash can
+    trashIconNode.click( () => {
+
+        // Replace the image in this page
+        $('#img-container').empty();
+        $('#img-container').append(emptyUserIcon);
+        $('#img').val('');
+
+        // Prepare information about old image file should be deleted
+        $('#shouldDeleteOldImage').val('true');
+    
+})
+}
+    
+
+$('document').ready( () => {
+    addTrashCan();
+})
+
+</script>

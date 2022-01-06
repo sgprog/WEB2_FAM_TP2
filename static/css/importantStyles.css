@@ -1,0 +1,89 @@
+
+.alert-danger {
+    background-color: rgba(255, 20, 20, 0.15);
+}
+
+.alert-warning {
+    background-color: rgba(255, 181, 20, 0.15);
+}
+
+.warningActionButton {
+    min-width: 140px;
+}
+
+.row > * {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.fade-web2-tp1 {
+    transition: none;
+    transition-property:all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+
+.web2-tp1-header-btn {
+    border-color: rgba(255, 255, 255, 0.616);
+    height: 24px;
+}
+
+.web2-tp1-header-btn > span {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.web2-tp1-userIcon-container {
+    display: flex;
+}
+
+.web2-tp1-userIcon {
+    color: rgba(128, 128, 128, 0.3);
+    font-size: 50px;
+    margin: auto;
+}
+
+.web2-tp1-userIcon-register {
+    color: rgba(128, 128, 128, 0.3);
+    font-size: 160px;
+    margin: auto;
+    padding-left: 60px;
+}
+
+
+
+
+
+
+.web2-tp2-bookIcon-container {
+    grid-column: 1 / span 1;
+    
+    
+    
+}
+
+.web2-tp2-imgContainer {
+    width: 100px;
+
+    
+}
+
+.web2-tp2-bookInfo-container {
+    
+    background-color: lightblue;
+    grid-column: 2 / span 1;
+    padding-left: 20px;
+    
+}
+
+.web2-tp2-bookInfo-grid {
+    display: grid;
+}
+
+
+
+body {
+    padding-top: 0;
+}

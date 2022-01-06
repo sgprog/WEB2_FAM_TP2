@@ -1,0 +1,39 @@
+
+
+<% if (typeof(showHeader) != 'undefined' && showHeader) {  %>
+
+<div class="web2-tp1-header-container">
+    <span class="web2-tp1-header-text">
+        Bonjour 
+        <% if (typeof(user) != 'undefined') { %>
+            <%- user.nom %>
+            <% } else { %>
+            Usager inconnu
+            <% } %>,
+    
+            vous êtes connecté(e)
+            
+
+    </span>
+    <% if (typeof(showDisconnectButton) != 'undefined' && showDisconnectButton) {  %>
+        <span class="web2-tp1-header-btn-container">
+            <a href="/usagers/logoutpage">
+                <button type="button" class="btn btn-success btn-xs web2-tp1-header-btn" title="Déconnecter">
+                    <span>Se déconnecter</span>
+                </button>
+            </a>
+        </span>
+    <% } %>
+    <span class="headerRightSection">
+        <span class="headerRightContent">
+            
+            <% if (typeof(hideBackToMainMenu) == 'undefined')  { %>
+            <a href="/index">
+                <span class="glyphicon glyphicon-circle-arrow-left"></span> Retour au menu principal
+            </a>
+            <% } %>
+        </span>
+        </span>
+</div>
+
+<% } %>
